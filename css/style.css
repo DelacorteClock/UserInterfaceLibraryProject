@@ -1,0 +1,293 @@
+/*****FONTS*****/
+@font-face {
+    font-family: MF;
+    font-weight: normal;
+    src: url('../fonts/MFR.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: MF;
+    font-weight: bold;
+    src: url('../fonts/MFB.ttf') format('truetype');
+}
+
+/*****VARIABLES*****/
+
+:root {
+    /**COLOUR**/
+    --keygreen: #00985F;
+    --altbackground: #FFF;
+    --warningyellow: #FCCC0A;
+    --warningtext: #000;
+    --closerred: #C60C30;
+    /*Old Key Green --keygreen: #007934;*/
+    /**TEXT**/
+    --defaultsize: 13px;
+    --defaultsizecomp: 11.5px;
+    --bighead: 40px;
+    --bigheadcomp: 35px;
+    --bigheadcomp2: 27.5px;
+    --buttonsize: 17.5px;
+    --buttonsizecomp: 15.5px;
+    --buttonfocussize: 18.5px;
+    --buttonfocussizecomp: 16.5px;
+    --paragraphsize: 20px;
+    --paragraphsizecomp: 17px;
+    --paragraphsizeexp: 23px;
+    /**ELEMENT SIZES**/
+    --halfbuttonheight: 15px;
+    --buttonheight: 30px;
+    --halfbuttonheightcomp: 12.5px;
+    --buttonheightcomp: 25px;
+    --halfbuttonfocusheight: 16px;
+    --buttonfocusheight: 32px;
+    --halfbuttonfocusheightcomp: 13.5px;
+    --buttonfocusheightcomp: 27px;
+    /**MODAL STYLES**/
+    --modalborderradius: 20px;
+    --modalmaxwidth: 65vw;
+}
+
+/*****DEFAULT STYLES*****/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: MF, sans-serif;
+    word-wrap: break-word;
+    color: var(--altbackground);
+    background-color: var(--keygreen);
+    font-size: var(--defaultsize);
+    max-width: 80vw;
+    margin: 50px auto;
+    line-height: 100%;
+    text-align: center;
+}
+
+/*****CLASSES*****/
+
+.warning {
+    font-weight: bold;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    transition: ease-in-out all 0.15s;
+}
+
+.header__container {
+    background-color: var(--altbackground);
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.header__image {
+    max-width: 75%;
+    max-height: 95%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header__text, .loading-box__text, .station-box__head, .station-box__paragraph {
+    font-weight: bold;
+    font-size: var(--bighead);
+    color: var(--keygreen);
+    line-height: 100%;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: ease-in-out all 0.15s;
+}
+
+.information-box {
+
+}
+
+.information-box__list {
+    padding-left: 0px;
+    list-style-type: none;
+}
+
+.information-box__button, #station-box__closer {
+    font-family: MF;
+    height: var(--buttonheight);
+    border-radius: var(--halfbuttonheight);
+    padding-left: var(--halfbuttonheight);
+    padding-right: var(--halfbuttonheight);
+    width: auto;
+    font-size: var(--buttonsize);
+    background-color: var(--altbackground);
+    color: var(--keygreen);
+    border-color: transparent;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: ease-in-out all 0.15s;
+}
+
+#station-box__closer {
+    font-weight: bold;
+    background-color: var(--closerred);
+    color: var(--altbackground);
+}
+
+.information-box__button:hover, .information-box__button:focus, #station-box__closer:hover, #station-box__closer:focus {
+    cursor: pointer;
+    /*Make Button + Text Bigger*/
+    font-size: var(--buttonfocussize);
+    height: var(--buttonfocusheight);
+    border-radius: var(--halfbuttonfocusheight);
+    padding-left: var(--halfbuttonfocusheight);
+    padding-right:  var(--halfbuttonfocusheight);
+    width: auto;
+}
+
+.information-box__button:active, #station-box__closer:active {
+    cursor: pointer;
+    /*Make Button + Text Bigger*/
+    font-size: var(--buttonfocussize);
+    font-weight: bold;
+    height: var(--buttonfocusheight);
+    border-radius: var(--halfbuttonfocusheight);
+    padding-left: var(--halfbuttonfocusheight);
+    padding-right:  var(--halfbuttonfocusheight);
+    width: auto;
+}
+
+.footer__text {
+    font-weight: bold;
+    font-size: inherit;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: ease-in-out all 0.15s;
+}
+
+.loading-box__contents, .station-box__contents {
+    margin: auto;
+    display: inline-block;
+    box-sizing: border-box;
+    background: var(--warningyellow);
+    padding: 15px;
+    max-width: var(--modalmaxwidth);
+    border-radius: var(--modalborderradius);
+}
+
+.station-box__contents {
+    width: var(--modalmaxwidth);
+    background: var(--altbackground);
+}
+
+.loading-box__text, .station-box__head, .station-box__paragraph {
+    color: var(--warningtext);
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.station-box__paragraph {
+    font-size: var(--paragraphsize);
+    font-weight: normal;
+}
+
+/*****IDS*****/
+
+#loading-box, #station-box {
+    display: none;
+}
+
+#loading-box.showing, #station-box.showing {
+    position: fixed;
+    padding: 30px;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 1);
+    overflow: auto;
+    display: grid;
+    text-align: center;
+}
+
+#loading-box.showing {
+    z-index: 200;
+}
+
+#station-box.showing {
+    z-index: 100;
+}
+
+#line-img {
+    display: block;
+    width: 25vw;
+    margin: 0 auto;
+}
+
+/*****RESPONSIVE CSS*****/
+
+@media all and (max-width: 650px) {
+    body {
+        font-size: var(--defaultsizecomp);
+    }
+
+    .header__text, .loading-box__text, .station-box__head {
+        font-size: var(--bigheadcomp);
+    }
+
+    .information-box__button, #station-box__closer {
+        height: var(--buttonheightcomp);
+        border-radius: var(--halfbuttonheightcomp);
+        padding-left: var(--halfbuttonheightcomp);
+        padding-right: var(--halfbuttonheightcomp);
+        font-size: var(--buttonsizecomp);
+    }
+
+    .information-box__button:hover, .information-box__button:focus, .information-box__button:active, #station-box__closer:hover, #station-box__closer:focus, #station-box__closer:active {
+        height: var(--buttonfocusheightcomp);
+        border-radius: var(--halfbuttonfocusheightcomp);
+        padding-left: var(--halfbuttonfocusheightcomp);
+        padding-right: var(--halfbuttonfocusheightcomp);
+        font-size: var(--buttonfocussizecomp);
+    }
+}
+
+@media all and (max-width: 450px) {
+    .header {
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+
+    .header__text, .loading-box__text, .station-box__head {
+        font-size: var(--bigheadcomp2);
+    }
+}
+
+@media all and (max-width: 320px) {
+    .header {
+        grid-template-columns: 1fr;
+    }
+
+    .header__image {
+        display: none;
+    }
+
+    .station-box__paragraph {
+        font-size: var(--paragraphsize);
+    }
+}
+
+/*Adapt For Large Windows*/
+@media all and (min-width: 800px) {
+    #line-img {
+        width: 20vw;
+    }
+    
+    .station-box__paragraph {
+        font-size: var(--paragraphsizeexp);
+    }
+}
