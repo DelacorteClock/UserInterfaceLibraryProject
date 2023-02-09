@@ -40,7 +40,7 @@ var stationRepository = (function () {
     function showDetails(station) {
         loadDetails(station).then(function () {
             console.log(station);
-            modalTools.openModal(station);
+            nuModalTools.openModal(station);
         });
     }
 
@@ -117,9 +117,19 @@ var stationRepository = (function () {
 
 var nuModalTools = (function () {
     
-    function openNuModal(station) {
-        
+    function openModal(station) {
+        //Open modal with content specific to inputted station
+        var modalTitle = document.querySelector('.modal-title');
+        modalTitle.innerText= '';
+        //Different 'paths' depending on whether there are one or two lines at the station selected
+        if (station.letter.length === 1) {
+            modalTitle.innerHTML = `Line ${station.letter}: <span style='color: ${station.hex}'>${station.line}</span>`;
+        } else {
+            modalTitle.innerHTML = `Lines ${station.letter}: ${station.line}`;
+        }
     }
+    
+    return {openModal: openModal};
     
 })();
 

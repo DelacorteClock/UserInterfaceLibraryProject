@@ -281,6 +281,10 @@ body {
     border-bottom: 0 none;
 }
 
+.modal-title {
+    color: var(--warningtext);
+}
+
 .modal-footer {
     border-top: 0 none;
 }
