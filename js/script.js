@@ -118,7 +118,6 @@ var stationRepository = (function () {
 var nuModalTools = (function () {
     
     function openModal(station) {
-        //Open modal with content specific to inputted station
         var modalTitle = document.querySelector('.modal-title');
         modalTitle.innerText= '';
         //Different 'paths' depending on whether there are one or two lines at the station selected
@@ -127,6 +126,29 @@ var nuModalTools = (function () {
         } else {
             modalTitle.innerHTML = `Lines ${station.letter}: ${station.line}`;
         }
+        //Work for body
+        var modalBody = document.querySelector('.modal-body');
+        //Link logo
+        var modalLink = document.createElement('a');
+        modalLink.href = station.infoUrl;
+        var modalLogo = document.createElement('img');
+        modalLogo.src = station.logoUrl;
+        modalLogo.id = 'line-img';
+        modalLink.appendChild(modalLogo);
+        //Info paragraph
+        var modalPar = document.createElement('p');
+        modalPar.classList.add('station-box__paragraph');
+        if (station.letter.length === 1) {
+            modalPar.innerText = `You selected ${station.name}: ${station.line} Line station ${station.id}. The ${station.line} (${station.letter}) Line of the LACMTA's Metro Rail system is a ` +  
+            ` ${station.weight.toLowerCase()} rail line which runs from ${station.terminal1} to ${station.terminal2}. To learn more about the ${station.line} Line ` + 
+            `please click the line logo above this paragraph to visit a LACMTA page where you can access its map and schedule.`;
+        } else {
+            modalPar.innerText = `You selected ${station.name}: ${station.line} Line station ${station.id}. The ${station.line} (${station.letter}) Lines of the LACMTA's Metro Rail system are ` +  
+            ` ${station.weight.toLowerCase()} rail lines in the Los Angeles region. To learn more about the ${station.line} lines ` + 
+            `please click the line logo above this paragraph to visit a LACMTA page where you can access a map and schedule for either line.`;
+        }
+        modalBody.appendChild(modalLink);
+        modalBody.appendChild(modalPar);
     }
     
     return {openModal: openModal};
