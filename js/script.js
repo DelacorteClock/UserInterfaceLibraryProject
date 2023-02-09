@@ -19,6 +19,8 @@ var stationRepository = (function () {
         buttonContainer.classList.add('group-list-item');
         var button = document.createElement('button');
         button.innerText = station.name;
+        button.classList.add('btn');
+        button.classList.add('btn-info');
         button.classList.add('information-box__button');
         buttonContainer.appendChild(button);
         infoList.appendChild(buttonContainer);

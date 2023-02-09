@@ -29,8 +29,8 @@
     --bigheadcomp2: 27.5px;
     --buttonsize: 17.5px;
     --buttonsizecomp: 15.5px;
-    --buttonfocussize: 18.5px;
-    --buttonfocussizecomp: 16.5px;
+    --buttonfocussize: 19.5px;
+    --buttonfocussizecomp: 17.5px;
     --paragraphsize: 20px;
     --paragraphsizecomp: 17px;
     --paragraphsizeexp: 23px;
@@ -127,6 +127,8 @@ body {
     border-color: transparent;
     margin-top: 5px;
     margin-bottom: 5px;
+    padding-top: auto;
+    padding-bottom: auto;
     transition: ease-in-out all 0.15s;
 }
 
@@ -134,6 +136,12 @@ body {
     font-weight: bold;
     background-color: var(--closerred);
     color: var(--altbackground);
+}
+
+.btn {
+    padding: unset;
+    padding-left: var(--halfbuttonfocusheight);
+    padding-right:  var(--halfbuttonfocusheight);
 }
 
 .information-box__button:hover, .information-box__button:focus, #station-box__closer:hover, #station-box__closer:focus {
@@ -144,6 +152,10 @@ body {
     border-radius: var(--halfbuttonfocusheight);
     padding-left: var(--halfbuttonfocusheight);
     padding-right:  var(--halfbuttonfocusheight);
+    background-color: var(--altbackground);
+    border-color: transparent;
+    border-style: none;
+    color: var(--keygreen);
     width: auto;
 }
 
