@@ -88,6 +88,7 @@ var stationRepository = (function () {
     }
 
     function loadDetails(station) {
+        showLoadingMessage();
         playTone();
         var url = station.lineUrl;
         //Use line details exclusively for V0.5
@@ -105,8 +106,10 @@ var stationRepository = (function () {
             station.weight = info.weight;
             station.logoUrl = info.logoUrl;
             station.infoUrl = info.infoUrl;
+            setTimeout(hideLoadingMessage, 500);
         }).catch(function (e) {
             console.error(e);
+            setTimeout(hideLoadingMessage, 500);
         });
     }
 
@@ -119,7 +122,9 @@ var nuModalTools = (function () {
     
     function openModal(station) {
         var modalTitle = document.querySelector('.modal-title');
-        modalTitle.innerText= '';
+        modalTitle.innerText = '';
+        var modalBody = document.querySelector('.modal-body');
+        modalBody.innerHTML = '';
         //Different 'paths' depending on whether there are one or two lines at the station selected
         if (station.letter.length === 1) {
             modalTitle.innerHTML = `Line ${station.letter}: <span style='color: ${station.hex}'>${station.line}</span>`;
@@ -127,7 +132,7 @@ var nuModalTools = (function () {
             modalTitle.innerHTML = `Lines ${station.letter}: ${station.line}`;
         }
         //Work for body
-        var modalBody = document.querySelector('.modal-body');
+        
         //Link logo
         var modalLink = document.createElement('a');
         modalLink.href = station.infoUrl;
@@ -153,78 +158,6 @@ var nuModalTools = (function () {
     
     return {openModal: openModal};
     
-})();
-
-//IIFE for modal work
-var modalTools = (function () {
-    //Open modal with content specific to inputted station
-    function openModal(station) {
-        //Select modal container and clear old contents
-        var modalContainer = document.querySelector('#station-box');
-        modalContainer.innerHTML = '';
-        //Create and fill modal
-        var modal = document.createElement('div');
-        modal.classList.add('station-box__contents');
-        //Make head for modal
-        var modalHead = document.createElement('h1');
-        modalHead.classList.add('station-box__head');
-        //Different 'paths' depending on whether there are one or two lines at the station selected
-        if (station.letter.length === 1) {
-            modalHead.innerHTML = `Line ${station.letter}: <span style='color: ${station.hex}'>${station.line}</span>`;
-        } else {
-            modalHead.innerHTML = `Lines ${station.letter}: ${station.line}`;
-        }
-        //Make a logo which is a link
-        var modalLink = document.createElement('a');
-        modalLink.href = station.infoUrl;
-        var modalLogo = document.createElement('img');
-        modalLogo.src = station.logoUrl;
-        modalLogo.id = 'line-img';
-        modalLink.appendChild(modalLogo);
-        //Create informational paragraph based on json results
-        var modalPar = document.createElement('p');
-        modalPar.classList.add('station-box__paragraph');
-        if (station.letter.length === 1) {
-            modalPar.innerText = `You selected ${station.name}: ${station.line} Line station ${station.id}. The ${station.line} (${station.letter}) Line of the LACMTA's Metro Rail system is a ` +  
-            ` ${station.weight.toLowerCase()} rail line which runs from ${station.terminal1} to ${station.terminal2}. To learn more about the ${station.line} Line ` + 
-            `please click the line logo above this paragraph to visit a LACMTA page where you can access its map and schedule.`;
-        } else {
-            modalPar.innerText = `You selected ${station.name}: ${station.line} Line station ${station.id}. The ${station.line} (${station.letter}) Lines of the LACMTA's Metro Rail system are ` +  
-            ` ${station.weight.toLowerCase()} rail lines in the Los Angeles region. To learn more about the ${station.line} lines ` + 
-            `please click the line logo above this paragraph to visit a LACMTA page where you can access a map and schedule for either line.`;
-        }
-        //Make a close button
-        var modalCloser = document.createElement('button');
-        modalCloser.id = 'station-box__closer';
-        modalCloser.innerText = 'CLOSE';
-        modalCloser.addEventListener('click', closeModal);
-        //Add elements to modal
-        modal.appendChild(modalHead);
-        modal.appendChild(modalLink);
-        modal.appendChild(modalPar);
-        modal.appendChild(modalCloser);
-        modalContainer.appendChild(modal);
-        modalContainer.classList.add('showing');
-        modalContainer.addEventListener('click', function (event) {
-            if (event.target === modalContainer) {
-                closeModal();
-            }
-        });
-    }
-    
-    function closeModal() {
-        var modalContainer = document.querySelector('#station-box');
-        modalContainer.classList.remove('showing');
-    }
-    
-    window.addEventListener('keydown', function (e) {
-        var modalContainer = document.querySelector('#station-box');
-        if (e.key === 'Escape' && modalContainer.classList.contains('showing')) {
-            modalContainer.classList.remove('showing');
-        }
-    });
-
-    return {openModal: openModal};
 })();
 
 //Use getAll to get station information

@@ -13,40 +13,25 @@
         <audio id='tone'>
             <source src='audio/tone.wav' type='audio/wav'>
         </audio>
-        <!--Application Modal Content-->
+        <!--INITIAL LOAD MESSAGE-->
         <div id='loading-box'>
             <div class='loading-box__contents'>
                 <h1 class='loading-box__text'>INFORMATION LOADING</h1>
                 <!--Potentially Add Loading Logo In Future-->
             </div>
         </div>
-        <!--Modal Container-->
-        <!-- <div id='station-box'></div> -->
-        <!--Application Key Content-->
-        <!-- <header class='header'>
-            <div class='header__container'>
-                <img class='header__image' src='images/logo1.svg' alt='Company Logo: Image of Train'>
-            </div>
-            <div class='header__container'>
-                <h1 class='header__text'>Station Info</h1>
-            </div>
-            <div class='header__container'>
-                <img class='header__image' src='images/logo2.svg' alt='Company Logo: Image of Bus'>
-            </div>
-        </header> -->
-
         <div class='modal' id='modal-nu' tabindex='-1' role='dialog' aria-hidden='true'>
             <div class='modal-dialog modal-dialog-centered' role='document'>
                 <div class='modal-content'>
                     <div class='modal-header'>
-                        <h3 class='modal-title'></h3>
+                        <h2 class='modal-title'></h2>
                         <button type='button' class='close' data-dismiss='modal' aria-label='CLOSE'>
-                            <span aria-hidden='true'>X</span>
+                            <span aria-hidden='true' id='xbutton'>X</span>
                         </button>
                     </div>
                     <div class='modal-body'></div>
                     <div class='modal-footer'>
-                        <button type='button' class='btn btn-warning' data-dismiss='modal'>Close</button>
+                        <button type='button' class='btn btn-warning' data-dismiss='modal' id='closebutton'>Close</button>
                     </div>
                 </div>
             </div>
@@ -63,7 +48,7 @@
         </main>
         <footer class='footer'>
             <div class='footer-container'>
-                <h2 class='footer__text'>Copyright 2023 Standard PVC</h2>
+                <p class='footer__text'>Copyright 2023 Standard PVC</p>
             </div>
         </footer>
         <strong>
