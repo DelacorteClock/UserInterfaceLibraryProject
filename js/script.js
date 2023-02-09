@@ -22,6 +22,8 @@ var stationRepository = (function () {
         button.classList.add('btn');
         button.classList.add('btn-info');
         button.classList.add('information-box__button');
+        button.setAttribute('data-toggle', 'modal');
+        button.setAttribute('data-target', '#modal-nu');
         buttonContainer.appendChild(button);
         infoList.appendChild(buttonContainer);
         detailLog(button, station);
@@ -86,7 +88,6 @@ var stationRepository = (function () {
     }
 
     function loadDetails(station) {
-        showLoadingMessage();
         playTone();
         var url = station.lineUrl;
         //Use line details exclusively for V0.5
@@ -104,14 +105,22 @@ var stationRepository = (function () {
             station.weight = info.weight;
             station.logoUrl = info.logoUrl;
             station.infoUrl = info.infoUrl;
-            setTimeout(hideLoadingMessage, 500);
         }).catch(function (e) {
             console.error(e);
-            setTimeout(hideLoadingMessage, 500);
         });
     }
 
     return {getAll: getAll, add: add, addListItem: addListItem, loadList: loadList, loadDetails: loadDetails};
+})();
+
+//Nu Modal IIFE
+
+var nuModalTools = (function () {
+    
+    function openNuModal(station) {
+        
+    }
+    
 })();
 
 //IIFE for modal work

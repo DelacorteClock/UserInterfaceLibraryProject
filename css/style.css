@@ -114,7 +114,7 @@ body {
     list-style-type: none;
 }
 
-.information-box__button, #station-box__closer {
+.information-box__button, .btn-warning {
     font-family: MF;
     height: var(--buttonheight);
     border-radius: var(--halfbuttonheight);
@@ -132,13 +132,13 @@ body {
     transition: ease-in-out all 0.15s;
 }
 
-#station-box__closer {
+.btn-warning {
     font-weight: bold;
     background-color: var(--closerred);
     color: var(--altbackground);
 }
 
-.information-box__button:hover, .information-box__button:focus, #station-box__closer:hover, #station-box__closer:focus {
+.information-box__button:hover, .information-box__button:focus, .btn-warning:hover, .btn-warning:focus {
     cursor: pointer;
     /*Make Button + Text Bigger*/
     font-size: var(--buttonfocussize);
@@ -153,7 +153,7 @@ body {
     width: auto;
 }
 
-.information-box__button:active, #station-box__closer:active {
+.information-box__button:active, .btn-warning:active {
     cursor: pointer;
     /*Make Button + Text Bigger*/
     font-size: var(--buttonfocussize);
@@ -201,7 +201,7 @@ body {
     font-weight: normal;
 }
 
-#station-box__closer:hover {
+.btn-warning:hover {
     color: var(--altbackground);
     background-color: var(--closerred);
 }
@@ -269,6 +269,22 @@ body {
     text-underline-position: under;
 }
 
+.modal {
+    background-color: black;
+}
+
+.modal-content {
+    border-radius: var(--modalborderradius);
+}
+
+.modal-header {
+    border-bottom: 0 none;
+}
+
+.modal-footer {
+    border-top: 0 none;
+}
+
 /*****RESPONSIVE CSS*****/
 
 @media all and (max-width: 650px) {
@@ -280,7 +296,7 @@ body {
         font-size: var(--bigheadcomp);
     }
 
-    .information-box__button, #station-box__closer {
+    .information-box__button, .btn-warning {
         height: var(--buttonheightcomp);
         border-radius: var(--halfbuttonheightcomp);
         padding-left: var(--halfbuttonheightcomp);
@@ -288,7 +304,7 @@ body {
         font-size: var(--buttonsizecomp);
     }
 
-    .information-box__button:hover, .information-box__button:focus, .information-box__button:active, #station-box__closer:hover, #station-box__closer:focus, #station-box__closer:active {
+    .information-box__button:hover, .information-box__button:focus, .information-box__button:active, .btn-warning:hover, .btn-warning:focus, .btn-warning:active {
         height: var(--buttonfocusheightcomp);
         border-radius: var(--halfbuttonfocusheightcomp);
         padding-left: var(--halfbuttonfocusheightcomp);
