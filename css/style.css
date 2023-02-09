@@ -39,10 +39,10 @@
     --buttonheight: 30px;
     --halfbuttonheightcomp: 12.5px;
     --buttonheightcomp: 25px;
-    --halfbuttonfocusheight: 16px;
-    --buttonfocusheight: 32px;
-    --halfbuttonfocusheightcomp: 13.5px;
-    --buttonfocusheightcomp: 27px;
+    --halfbuttonfocusheight: 17px;
+    --buttonfocusheight: 34px;
+    --halfbuttonfocusheightcomp: 14.5px;
+    --buttonfocusheightcomp: 29px;
     /**MODAL STYLES**/
     --modalborderradius: 20px;
     --modalmaxwidth: 65vw;
@@ -61,7 +61,7 @@ body {
     background-color: var(--keygreen);
     font-size: var(--defaultsize);
     max-width: 80vw;
-    margin: 50px auto;
+    margin: 65px auto;
     line-height: 100%;
     text-align: center;
 }
@@ -138,12 +138,6 @@ body {
     color: var(--altbackground);
 }
 
-.btn {
-    padding: unset;
-    padding-left: var(--halfbuttonfocusheight);
-    padding-right:  var(--halfbuttonfocusheight);
-}
-
 .information-box__button:hover, .information-box__button:focus, #station-box__closer:hover, #station-box__closer:focus {
     cursor: pointer;
     /*Make Button + Text Bigger*/
@@ -207,6 +201,11 @@ body {
     font-weight: normal;
 }
 
+#station-box__closer:hover {
+    color: var(--altbackground);
+    background-color: var(--closerred);
+}
+
 /*****IDS*****/
 
 #loading-box, #station-box {
@@ -239,6 +238,22 @@ body {
     display: block;
     width: 25vw;
     margin: 0 auto;
+}
+
+/*****LIBRARY ISSUE CORRECTIONS*****/
+.btn {
+    padding: unset;
+    padding-left: var(--halfbuttonfocusheight);
+    padding-right:  var(--halfbuttonfocusheight);
+}
+
+.fixed-top {
+    z-index: 50;
+}
+
+.navbar {
+    background-color: white;
+    height: 60px;
 }
 
 /*****RESPONSIVE CSS*****/
