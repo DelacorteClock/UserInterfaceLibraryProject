@@ -256,6 +256,19 @@ body {
     height: 60px;
 }
 
+.navbar-brand {
+    color: var(--keygreen);
+    font-weight: bold;
+    font-size: var(--bigheadcomp2);
+}
+
+.navbar-brand:hover {
+    color: var(--keygreen);
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
 /*****RESPONSIVE CSS*****/
 
 @media all and (max-width: 650px) {
